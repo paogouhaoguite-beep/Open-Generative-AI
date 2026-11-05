@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build:packages": "npm run build --workspace=studio --workspace=workflow-builder --workspace=ai-agent",
+    "build": "npm run build:packages && next build",
     "start": "next start",
     "lint": "next lint",
     "build:studio": "cd packages/studio && npm run build",
@@ -87,14 +88,14 @@
     }
   },
   "dependencies": {
+    "ai-agent": "file:./packages/Open-Poe-AI/packages/agents",
     "axios": "^1.7.0",
     "next": "^15.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.4.1",
     "studio": "*",
-    "workflow-builder": "file:./packages/Vibe-Workflow/packages/workflow-builder",
-    "ai-agent": "file:./packages/Open-Poe-AI/packages/agents"
+    "workflow-builder": "file:./packages/Vibe-Workflow/packages/workflow-builder"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -106,6 +107,7 @@
     "eslint-config-next": "^15.0.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.2.2",
+    "tailwindcss3": "npm:tailwindcss@^3.4.19",
     "vite": "^5.4.0"
   },
   "main": "electron/main.js"
